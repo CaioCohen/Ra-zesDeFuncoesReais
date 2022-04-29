@@ -3,7 +3,7 @@ package classes;
 import java.util.function.Function;
 
 public class Metodos {
-    private double E = 0.0001;
+    private double E = 0.00001;
     
     public double bissecao(Function<Double,Double> funcao, double a, double b){
         boolean signalA = funcao.apply(a) > 0;
@@ -38,7 +38,7 @@ public class Metodos {
             a = novoIntervalo;
         }
         if(!(signalA ^ singnalB)){
-            System.out.println("não há raiz única no intervalo dadao");
+            System.out.println("não há raiz única no intervalo dado");
         }
         if(Math.abs(funcao.apply(novoIntervalo)) < E){
             return novoIntervalo;
