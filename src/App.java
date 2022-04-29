@@ -5,5 +5,6 @@ public class App {
         Metodos metodos = new Metodos();
         Polinomio polinomio = new Polinomio();
         System.out.println(metodos.bissecao((a)-> polinomio.terceiroGrau(a), -5.0, 5.0));
+        System.out.println(metodos.falsaPosicao((a)-> polinomio.terceiroGrau(a), -5.0, 5.0));
     }
 }
