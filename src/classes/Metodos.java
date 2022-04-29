@@ -76,4 +76,5 @@ public class Metodos {
 
         return secante(f, x1, xk);
     }
+    //metodos
 }
