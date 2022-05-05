@@ -10,10 +10,18 @@ public class Polinomio {
     }
 
     public Double terceiroGrau(double x){
-        return Math.pow(x, 3) + Math.pow(x, 2) - 30;
+        return Math.pow(x, 3) - (2* x) + 1;
     }
 
     public Double terceiroGrauDerivada(double x){
-        return (3*Math.pow(x, 2)) + (2*x);
+        return (3*Math.pow(x, 2)) - 2;
+    }
+
+    public double log(double x){
+        return (x*Math.log10(x))-1;
+    }
+
+    public double logDerivada(double x){
+        return (Math.log10(x))+(1/Math.log(x));
     }
 }

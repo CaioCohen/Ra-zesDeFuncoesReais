@@ -3,7 +3,7 @@ package classes;
 import java.util.function.Function;
 
 public class Metodos {
-    private double E = 0.00001;
+    private double E = 0.0000001;
     
     public double bissecao(Function<Double,Double> funcao, double a, double b){
         boolean signalA = funcao.apply(a) > 0;
@@ -18,11 +18,12 @@ public class Metodos {
         }
         if(!(signalA ^ singnalB)){
             System.out.println("não há raiz única no intervalo dadao");
+            return 0;
         }
+        System.out.println("valor de csi: " + novoIntervalo + " f(csi): " + funcao.apply(novoIntervalo));
         if(Math.abs(funcao.apply(novoIntervalo)) < E){
             return novoIntervalo;
         }
-
         return bissecao(funcao, a, b);
     }
 
@@ -39,11 +40,12 @@ public class Metodos {
         }
         if(!(signalA ^ singnalB)){
             System.out.println("não há raiz única no intervalo dado");
+            return 0;
         }
+        System.out.println("valor de csi: " + novoIntervalo + " f(csi): " + funcao.apply(novoIntervalo));
         if(Math.abs(funcao.apply(novoIntervalo)) < E){
             return novoIntervalo;
         }
-
         return bissecao(funcao, a, b);
     }
 
@@ -54,12 +56,29 @@ public class Metodos {
         }catch(Exception ex){
             System.out.println("a derivada da raiz é 0, então o método não funciona");
         }
-
+        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        k += 1;
         if((Math.abs(f.apply(xk)) < E) || k >= 100){
+            System.out.println("iteracoes: " + k);
             return xk;
         }
-
         return newtonRaphson(f, flinha, k, xk);
+    }
+
+    public double newtonRaphsonAlternativo(Function<Double,Double> f,Function<Double,Double> flinha, int k,double xn, double x0){
+        double xk = xn;
+        try{
+            xk = xk - (f.apply(xk) / flinha.apply(x0));
+        }catch(Exception ex){
+            System.out.println("a derivada da raiz é 0, então o método não funciona");
+        }
+        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        k += 1;
+        if((Math.abs(f.apply(xk)) < E) || k >= 100){
+            System.out.println("iteracoes: " + k);
+            return xk;
+        }
+        return newtonRaphsonAlternativo(f, flinha, k, xk, x0);
     }
 
     public double secante(Function<Double,Double> f, double x0, double x1){
@@ -68,12 +87,12 @@ public class Metodos {
             xk = xk - (f.apply(xk) / ((f.apply(xk)-f.apply(x0))/(xk-x0)));
         }catch(Exception ex){
             System.out.println("x0 e x1 nao atendem às codicoes");
+            return 0;
         }
-
+        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         if((Math.abs(f.apply(xk)) < E) || Math.abs(xk - x1) < E){
             return xk;
         }
-
         return secante(f, x1, xk);
     }
     //metodos

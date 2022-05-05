@@ -4,9 +4,15 @@ public class App {
     public static void main(String[] args) throws Exception {
         Metodos metodos = new Metodos();
         Polinomio polinomio = new Polinomio();
-        System.out.println(metodos.bissecao((a)-> polinomio.terceiroGrau(a), -5.0, 5.0));
-        System.out.println(metodos.falsaPosicao((a)-> polinomio.terceiroGrau(a), -5.0, 5.0));
-        System.out.println(metodos.newtonRaphson((a)-> polinomio.terceiroGrau(a),(a)-> polinomio.terceiroGrauDerivada(a), 0, 2.0));
-        System.out.println(metodos.secante((a)-> polinomio.terceiroGrau(a),0, 1));
+        System.out.println("metodo da bissecao:");
+        System.out.println(metodos.bissecao((a)-> polinomio.log(a), 2, 3));
+        System.out.println("metodo da falsa posicao:");
+        System.out.println(metodos.falsaPosicao((a)-> polinomio.log(a), 2, 3));
+        System.out.println("metodo de Newton Raphson:");
+        System.out.println(metodos.newtonRaphson((a)-> polinomio.log(a),(a)-> polinomio.logDerivada(a), 0,2));
+        // System.out.println("metodo de Newton Raphson alternativo:");
+        // System.out.println(metodos.newtonRaphsonAlternativo((a)-> polinomio.log(a),(a)-> polinomio.logDerivada(a), 0,2,2));
+        System.out.println("metodo da secante:");
+        System.out.println(metodos.secante((a)-> polinomio.log(a),2,3));
     }
 }
