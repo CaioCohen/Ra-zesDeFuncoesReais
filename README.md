@@ -1,18 +1,6 @@
-## Getting Started
+Para compilar o programa, clique no arquivo "Compilar".
+Se você estiver no windows, clique no arquivo "ExecutarPrograma" para executá-lo.
+Se você estiver no LInux, clique no arquivo "ExecutarProgramaLinux" para executá-lo.
+Caso dê problema de autorização: No windows, execute os arquivos como administrador.
+Se estiver no linux, rode o comando: chmod 777 <nomeDoArquivo>.cmd  para conceder acesso
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
