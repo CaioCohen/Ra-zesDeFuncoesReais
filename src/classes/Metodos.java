@@ -52,7 +52,7 @@ public class Metodos {
 
     public double newtonRaphson(Function<Double,Double> f,Function<Double,Double> flinha, int k, double x0){
         double xk = x0;
-        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        //System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         try{
             xk = xk - (f.apply(xk) / flinha.apply(xk));
         }catch(Exception ex){
@@ -68,6 +68,7 @@ public class Metodos {
 
     public double newtonRaphsonAlternativo(Function<Double,Double> f,Function<Double,Double> flinha, int k,double xn, double x0){
         double xk = xn;
+        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         try{
             xk = xk - (f.apply(xk) / flinha.apply(x0));
         }catch(Exception ex){

@@ -10,7 +10,7 @@ public class Polinomio {
     }
 
     public Double terceiroGrau(double x){
-        return Math.pow(x, 3) - (2* x) + 1;
+        return Math.pow(x, 3) - (2* x) + 2;
     }
 
     public Double terceiroGrauDerivada(double x){
