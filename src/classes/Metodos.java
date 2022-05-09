@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 public class Metodos {
     private double E = 0.0000001;
+    private double lambda = 0.001;
     
     public double bissecao(Function<Double,Double> funcao, double a, double b){
         boolean signalA = funcao.apply(a) > 0;
@@ -56,7 +57,7 @@ public class Metodos {
         }catch(Exception ex){
             System.out.println("a derivada da raiz é 0, então o método não funciona");
         }
-        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        //System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         k += 1;
         if((Math.abs(f.apply(xk)) < E) || k >= 100){
             System.out.println("iteracoes: " + k);
@@ -72,13 +73,35 @@ public class Metodos {
         }catch(Exception ex){
             System.out.println("a derivada da raiz é 0, então o método não funciona");
         }
-        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        //System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         k += 1;
         if((Math.abs(f.apply(xk)) < E) || k >= 100){
             System.out.println("iteracoes: " + k);
             return xk;
         }
         return newtonRaphsonAlternativo(f, flinha, k, xk, x0);
+    }
+
+        public double newtonRaphsonModificado(Function<Double,Double> f,Function<Double,Double> flinha, int k,double xn, double xm){
+        double xk = xn;
+        double xk1;
+        if(Math.abs(flinha.apply(xk)) < this.lambda){
+            xk1 = xm;
+        }else{
+            xk1 = xn;
+        }
+        try{
+            xk = xk - (f.apply(xk) / flinha.apply(xk1));
+        }catch(Exception ex){
+            System.out.println("a derivada da raiz é 0, então o método não funciona");
+        }
+        //System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
+        k += 1;
+        if((Math.abs(f.apply(xk)) < E) || k >= 100){
+            System.out.println("iteracoes: " + k);
+            return xk;
+        }
+        return newtonRaphsonAlternativo(f, flinha, k, xk, xk1);
     }
 
     public double secante(Function<Double,Double> f, double x0, double x1){
