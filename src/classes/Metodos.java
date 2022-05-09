@@ -52,12 +52,12 @@ public class Metodos {
 
     public double newtonRaphson(Function<Double,Double> f,Function<Double,Double> flinha, int k, double x0){
         double xk = x0;
+        System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         try{
             xk = xk - (f.apply(xk) / flinha.apply(xk));
         }catch(Exception ex){
             System.out.println("a derivada da raiz é 0, então o método não funciona");
         }
-        //System.out.println("valor de csi: " + xk + " f(csi): " + f.apply(xk));
         k += 1;
         if((Math.abs(f.apply(xk)) < E) || k >= 100){
             System.out.println("iteracoes: " + k);
