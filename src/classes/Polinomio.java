@@ -24,4 +24,12 @@ public class Polinomio {
     public double logDerivada(double x){
         return (Math.log10(x))+(1/Math.log(x));
     }
+
+    public double complexo(double x){
+        return Math.sqrt(x);
+    }
+
+    public double complexoDerivada(double x){
+        return 1/(2*(Math.sqrt(x)));
+    }
 }
