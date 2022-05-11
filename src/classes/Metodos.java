@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Metodos {
@@ -118,6 +119,26 @@ public class Metodos {
             return xk;
         }
         return secante(f, x1, xk);
+    }
+
+    public double metodoEuler(BiFunction<Double,Double, Double> f, double h, double y0, double x0, double x){
+        y0 = y0 + (h*f.apply(x, y0));
+        if(Math.abs(x - x0) < 0.001){
+            return y0;
+        }
+        x0 += h;
+        return metodoEuler(f, h, y0, x0, x);
+    }
+
+    public double metodoEulerMelhorado(BiFunction<Double,Double, Double> f, double h, double y0, double x0, double x){
+        double yt;
+        yt = y0 + (h*(f.apply(x0, y0)));
+        y0 = y0 + (h/2)*(f.apply(x0, y0) + f.apply(x0 + h, yt));
+        if(Math.abs(x - x0) < 0.001){
+            return y0;
+        }
+        x0 += h;
+        return metodoEulerMelhorado(f, h, y0, x0, x);
     }
     //metodos
 }

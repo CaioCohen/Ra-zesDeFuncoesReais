@@ -32,4 +32,8 @@ public class Polinomio {
     public double complexoDerivada(double x){
         return 1/(2*(Math.sqrt(x)));
     }
+
+    public double funcaoEuler(double x, double y){
+        return (x/y) - (y/x);
+    }
 }
